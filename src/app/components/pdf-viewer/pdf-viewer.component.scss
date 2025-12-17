@@ -1,0 +1,17 @@
+.pdfviewer {
+  &__header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+
+  &__info{
+    text-align: start;
+  }
+
+  &__list{
+    mat-list-item{
+      cursor: pointer;
+    }
+  }
+}
