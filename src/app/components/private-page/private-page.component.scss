@@ -1,11 +1,12 @@
-.private-page{
-  &__user{
+.private-page {
+  &__user {
     color: var(--primary);
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
   }
 }
