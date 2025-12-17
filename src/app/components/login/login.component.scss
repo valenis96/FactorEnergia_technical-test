@@ -1,0 +1,15 @@
+.login {
+  display: flex;
+  justify-self: center;
+
+  mat-card{
+    padding: 1rem;
+  }
+
+  .login__inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+}
