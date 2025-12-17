@@ -1,2 +1,23 @@
-<ngx-extended-pdf-viewer [src]="'assets/pdfs/Bootstrap-vs-Material-Design-vs-Prime-vs-Tailwind.pdf'">
-</ngx-extended-pdf-viewer>
+<div class="pdfviewer">
+  <div class="pdfviewer__header">
+    <mat-list role="list" class="pdfviewer__info">
+      <mat-list-item role="listitem">name: {{invoices[0].name}}</mat-list-item>
+      <mat-list-item role="listitem">date: {{invoices[0].date}}</mat-list-item>
+      <mat-list-item role="listitem">amount: {{invoices[0].amount}}</mat-list-item>
+      <mat-list-item role="listitem">address: {{invoices[0].address}}</mat-list-item>
+    </mat-list>
+    <mat-card appearance="outlined" class="pdfviewer__list">
+      <mat-card-header>
+        <mat-card-title>Invoices</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <mat-list role="list" class="pdfviewer__info">
+          <mat-list-item role="listitem" *ngFor="let invoice of invoices">{{invoice.name}}</mat-list-item>
+        </mat-list>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+  <ngx-extended-pdf-viewer [src]="'assets/pdfs/' + invoices[0].pdf">
+  </ngx-extended-pdf-viewer>
+</div>

@@ -1,0 +1,11 @@
+.private-page{
+  &__user{
+    color: var(--primary);
+  }
+
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

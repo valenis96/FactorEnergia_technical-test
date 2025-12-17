@@ -29,6 +29,6 @@ export class LoginComponent {
 
 
   submitForm(): void {
-    this.router.navigate([`/pdfviewer`]);
+    this.router.navigate([`/private-page`]);
   }
 }
