@@ -9,13 +9,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, FormsModule, MatCardModule, MatButtonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideAnimations()],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, FormsModule, MatCardModule, MatButtonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideAnimations()]
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);

@@ -8,12 +8,11 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
-  selector: 'app-personal-data',
-  standalone: true,
-  imports: [MatButtonModule, MatListModule, MatCardModule, MatDialogModule],
-  templateUrl: './personal-data.component.html',
-  styleUrl: './personal-data.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-personal-data',
+    imports: [MatButtonModule, MatListModule, MatCardModule, MatDialogModule],
+    templateUrl: './personal-data.component.html',
+    styleUrl: './personal-data.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalDataComponent {
   user: User = user;

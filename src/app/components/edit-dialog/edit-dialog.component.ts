@@ -9,11 +9,10 @@ import { user } from 'src/assets/public/data';
 import { User } from 'src/assets/public/models';
 
 @Component({
-  selector: 'app-edit-dialog',
-  standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatInputModule],
-  templateUrl: './edit-dialog.component.html',
-  styleUrl: './edit-dialog.component.scss'
+    selector: 'app-edit-dialog',
+    imports: [CommonModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatInputModule],
+    templateUrl: './edit-dialog.component.html',
+    styleUrl: './edit-dialog.component.scss'
 })
 export class EditDialogComponent {
   user: User = user;

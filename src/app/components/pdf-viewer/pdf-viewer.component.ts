@@ -7,13 +7,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-pdf-viewer',
-  standalone: true,
-  imports: [CommonModule, NgxExtendedPdfViewerModule, MatListModule, MatCardModule],
-  templateUrl: './pdf-viewer.component.html',
-  styleUrls: ['./pdf-viewer.component.scss'],
-  providers: [NgxExtendedPdfViewerService,],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-pdf-viewer',
+    imports: [CommonModule, NgxExtendedPdfViewerModule, MatListModule, MatCardModule],
+    templateUrl: './pdf-viewer.component.html',
+    styleUrls: ['./pdf-viewer.component.scss'],
+    providers: [NgxExtendedPdfViewerService,],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PdfViewerComponent {
   invoices: Invoice[] = invoices
