@@ -1,35 +1,65 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { users } from 'src/assets/public/data';
+import { Store } from '@ngrx/store';
+import { Subscription, take } from 'rxjs';
+import { AppState } from 'src/app/app.state';
+import { SetUserAction } from 'src/app/store/actions/user.action';
 import { User } from 'src/assets/public/models';
 
 @Component({
   selector: 'app-edit-dialog',
-  imports: [CommonModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatInputModule],
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, MatDialogModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatInputModule],
   templateUrl: './edit-dialog.component.html',
   styleUrl: './edit-dialog.component.scss'
 })
 export class EditDialogComponent {
-  users: User[] = users;
+  user!: User
   private fb = inject(FormBuilder);
-  editForm = this.fb.group({
-    name: [null, Validators.required],
-    email: [null, Validators.required],
-    address: [null, Validators.required],
+  editForm = this.fb.nonNullable.group({
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    address: ['', Validators.required],
   });
+  private subs = new Subscription();
 
-  constructor(private readonly dialog: MatDialogRef<EditDialogComponent>) { }
+  constructor(private readonly dialog: MatDialogRef<EditDialogComponent>, private store: Store<AppState>) { }
+
+  ngOnInit(): void {
+    this.subs.add(this.store.select('user')
+      .pipe(take(1))
+      .subscribe((u: User) => {
+        if (!u) return;
+        this.user = u
+
+        this.editForm.patchValue({
+          name: u.name,
+          email: u.email,
+          address: u.address,
+        });
+      }));
+  }
 
   changeData(): void {
+    const editedUser: User = {
+      ...this.user,
+      ...this.editForm.value,
+    };
+    this.store.dispatch(SetUserAction({ data: editedUser }));
+
     this.dialog.close();
   }
 
   onNoClick(): void {
     this.dialog.close();
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

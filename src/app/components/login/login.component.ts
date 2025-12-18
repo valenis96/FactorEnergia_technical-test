@@ -26,9 +26,7 @@ export class LoginComponent {
     password: [null, Validators.required],
   });
 
-
-  constructor(private router: Router, private store: Store<AppState>,) { }
-
+  constructor(private router: Router, private store: Store<AppState>) { }
 
   submitForm(): void {
     this.store.dispatch(SetUserAction({ data: users[0] }));
