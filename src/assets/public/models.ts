@@ -1,4 +1,5 @@
 export interface Invoice {
+  id: number,
   name: string,
   date: string,
   amount: number,

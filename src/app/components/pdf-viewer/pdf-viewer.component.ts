@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxExtendedPdfViewerModule, NgxExtendedPdfViewerService } from 'ngx-extended-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { Invoice } from 'src/assets/public/models';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { Subscription, take } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { Store } from '@ngrx/store';
 
@@ -14,28 +14,20 @@ import { Store } from '@ngrx/store';
   imports: [CommonModule, NgxExtendedPdfViewerModule, MatListModule, MatCardModule],
   templateUrl: './pdf-viewer.component.html',
   styleUrls: ['./pdf-viewer.component.scss'],
-  providers: [NgxExtendedPdfViewerService,],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PdfViewerComponent {
-  invoices!: Invoice[];
-  openedInvoice!: Invoice;
-  private subs = new Subscription();
+  invoices$!: Observable<Invoice[]>;
+  openedInvoice$!: Observable<Invoice | undefined>;
 
-  constructor(private pdfService: NgxExtendedPdfViewerService, private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.subs.add(this.store.select('invoices')
-      .pipe(take(1))
-      .subscribe((i: Invoice[]) => {
-        if (!i) return;
-        this.invoices = i
-      }));
-
-    this.openedInvoice = this.invoices[0]
+    this.invoices$ = this.store.select('invoices')
+    this.openedInvoice$ = this.invoices$.pipe(map(invoices => invoices[0]))
   }
 
-  ngOnDestroy() {
-    this.subs.unsubscribe();
+  changePDF(id: number): void {
+    this.openedInvoice$ = this.invoices$.pipe(map(items => items.find(item => item.id === id)))
   }
 }
