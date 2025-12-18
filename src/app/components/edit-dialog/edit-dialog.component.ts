@@ -5,17 +5,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { user } from 'src/assets/public/data';
+import { users } from 'src/assets/public/data';
 import { User } from 'src/assets/public/models';
 
 @Component({
-    selector: 'app-edit-dialog',
-    imports: [CommonModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatInputModule],
-    templateUrl: './edit-dialog.component.html',
-    styleUrl: './edit-dialog.component.scss'
+  selector: 'app-edit-dialog',
+  imports: [CommonModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatInputModule],
+  templateUrl: './edit-dialog.component.html',
+  styleUrl: './edit-dialog.component.scss'
 })
 export class EditDialogComponent {
-  user: User = user;
+  users: User[] = users;
   private fb = inject(FormBuilder);
   editForm = this.fb.group({
     name: [null, Validators.required],

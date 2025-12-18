@@ -7,9 +7,10 @@ export const invoices: Invoice[] = [
   { name: "Teresa Cosmai", date: '22/09/1996', amount: 500, address: 'via Gonin 7', pdf: '' }
 ]
 
-export const user: User = {
+export const users: User[] = [{
   name: "Valentina Maronese",
   email: 'val.maronese@gmail.com',
   date: '23/10/2025',
   address: 'via Domenico Scarlatti 33',
-}
+  password: '123'
+}]
