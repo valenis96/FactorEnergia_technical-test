@@ -10,6 +10,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { SetUserAction } from 'src/app/store/actions/user.action';
 import { users } from 'src/assets/public/data';
+import { User } from 'src/assets/public/models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ import { users } from 'src/assets/public/data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
+  private _snackBar = inject(MatSnackBar);
   private fb = inject(FormBuilder);
   loginForm = this.fb.group({
     email: [null, Validators.required],
@@ -29,7 +32,26 @@ export class LoginComponent {
   constructor(private router: Router, private store: Store<AppState>) { }
 
   submitForm(): void {
-    this.store.dispatch(SetUserAction({ data: users[0] }));
-    this.router.navigate([`/private-page`]);
+    const user = this.getUserFromForm();
+    if (user) {
+      this.store.dispatch(SetUserAction({ data: user }));
+      this.router.navigate([`/private-page`]);
+    } else {
+      this._snackBar.open("Wrong credentials", "Close");
+    }
+
   }
+
+  getUserFromForm(): User | undefined {
+    const { email, password } = this.loginForm.getRawValue();
+
+    if (!email || !password) {
+      return undefined;
+    }
+
+    return users.find(
+      user => user.email === email && user.password === password
+    );
+  }
+
 }
