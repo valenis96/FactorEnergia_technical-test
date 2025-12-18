@@ -1,5 +1,5 @@
 <div class="private-page">
-  <h1 class="private-page__user">Hola {{name}}!</h1>
+  <h1 class="private-page__user">Hola {{(user$ | async)?.name}}!</h1>
   <div class="private-page__buttons">
     <button mat-raised-button color="primary" [routerLink]="'/personal-data'">View personal data</button>
     <button mat-raised-button color="primary" [routerLink]="'/pdfviewer'">View invoices</button>

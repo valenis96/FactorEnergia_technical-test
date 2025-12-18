@@ -13,9 +13,7 @@ export const initialState: User = {
 
 export const UserReducer = createReducer(
   initialState,
-  on(SetUserAction, (state, action) => {
-    console.log(action);
-
-    return { ...state, ...action };
+  on(SetUserAction, (_, action) => {
+    return { ...action.data };
   }),
 );

@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { SetUserAction } from 'src/app/store/actions/user.action';
+import { users } from 'src/assets/public/data';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, FormsModule, MatCardModule, MatButtonModule,],
@@ -29,15 +31,7 @@ export class LoginComponent {
 
 
   submitForm(): void {
-    this.store.dispatch(SetUserAction({
-      data: {
-        name: "Valentina Maronese",
-        email: 'val.maronese@gmail.com',
-        date: '23/10/2025',
-        address: 'via Domenico Scarlatti 33',
-        password: '123'
-      }
-    }));
+    this.store.dispatch(SetUserAction({ data: users[0] }));
     this.router.navigate([`/private-page`]);
   }
 }

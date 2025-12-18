@@ -4,10 +4,10 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item role="listitem">name: {{users[0].name}}</mat-list-item>
-      <mat-list-item role="listitem">amount: {{users[0].email}}</mat-list-item>
-      <mat-list-item role="listitem">date: {{users[0].date}}</mat-list-item>
-      <mat-list-item role="listitem">address: {{users[0].address}}</mat-list-item>
+      <mat-list-item role="listitem">name: {{(user$ | async)?.name}}</mat-list-item>
+      <mat-list-item role="listitem">amount: {{(user$ | async)?.email}}</mat-list-item>
+      <mat-list-item role="listitem">date: {{(user$ | async)?.date}}</mat-list-item>
+      <mat-list-item role="listitem">address: {{(user$ | async)?.address}}</mat-list-item>
     </mat-list>
   </mat-card-content>
   <mat-card-actions>

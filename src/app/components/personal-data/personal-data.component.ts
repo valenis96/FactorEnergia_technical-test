@@ -6,21 +6,29 @@ import { users } from 'src/assets/public/data';
 import { User } from 'src/assets/public/models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-personal-data',
-  imports: [MatButtonModule, MatListModule, MatCardModule, MatDialogModule],
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, MatListModule, MatCardModule, MatDialogModule],
   templateUrl: './personal-data.component.html',
   styleUrl: './personal-data.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalDataComponent {
-  users: User[] = users;
+  user$!: Observable<User>;
 
-  constructor(private readonly dialog: MatDialog) { }
+  constructor(private readonly dialog: MatDialog, private store: Store<AppState>) { }
+
+  ngOnInit(): void {
+    this.user$ = this.store.select('user')
+  }
 
   openDialog(): void {
     this.dialog.open(EditDialogComponent);
   }
-
 }
