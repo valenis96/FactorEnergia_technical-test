@@ -11,4 +11,5 @@ export interface User {
   date: string,
   email: string,
   address: string,
+  password: string
 }

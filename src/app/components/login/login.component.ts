@@ -4,9 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
+import { SetUserAction } from 'src/app/store/actions/user.action';
+import { users } from 'src/assets/public/data';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
   imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, FormsModule, MatCardModule, MatButtonModule,],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideAnimations()],
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);
@@ -24,11 +26,10 @@ export class LoginComponent {
     password: [null, Validators.required],
   });
 
-
-  constructor(private router: Router,) { }
-
+  constructor(private router: Router, private store: Store<AppState>) { }
 
   submitForm(): void {
+    this.store.dispatch(SetUserAction({ data: users[0] }));
     this.router.navigate([`/private-page`]);
   }
 }

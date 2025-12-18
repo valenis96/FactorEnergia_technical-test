@@ -1,0 +1,31 @@
+<form class="login" [formGroup]="editForm" novalidate>
+  <h2 mat-dialog-title>Edit your personal data</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput type="email" value="{{user.name}}" formControlName="name" required />
+      <mat-error *ngIf="editForm.controls['name'].hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" value="{{user.email}}" formControlName="email" required />
+      <mat-error *ngIf="editForm.controls['email'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput type="email" value="{{user.address}}" formControlName="address" required />
+      <mat-error *ngIf="editForm.controls['address'].hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="changeData()" [disabled]="editForm.invalid"
+      cdkFocusInitial>Ok</button>
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  </mat-dialog-actions>
+</form>
