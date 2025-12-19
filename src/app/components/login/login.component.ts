@@ -34,15 +34,17 @@ export class LoginComponent {
   submitForm(): void {
     const user = this.getUserFromForm();
     if (user) {
+      // store the user and got to his private page
       this.store.dispatch(SetUserAction({ data: user }));
       this.router.navigate([`/private-page`]);
     } else {
+      // error message
       this._snackBar.open("Wrong credentials", "Close");
     }
-
   }
 
   getUserFromForm(): User | undefined {
+    // get email and password value in the inputs to find the user that correspond to that credentials
     const { email, password } = this.loginForm.getRawValue();
 
     if (!email || !password) {

@@ -9,18 +9,22 @@
     font-weight: 600;
   }
 
+  &__invoice-container {
+    width: 100%;
+  }
+
   &__invoice {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 
     &-info {
       text-align: start;
     }
-  }
 
-  &__list {
-    mat-list-item {
-      cursor: pointer;
-      text-align: start;
+    ngx-extended-pdf-viewer {
+      height: 50rem;
     }
   }
+
 }

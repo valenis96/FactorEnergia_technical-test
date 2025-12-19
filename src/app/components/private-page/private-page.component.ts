@@ -19,8 +19,8 @@ export class PrivatePageComponent {
 
   constructor(private store: Store<AppState>) { }
 
-
   ngOnInit(): void {
+    // get user that is stored from the login
     this.user$ = this.store.select('user')
   }
 }

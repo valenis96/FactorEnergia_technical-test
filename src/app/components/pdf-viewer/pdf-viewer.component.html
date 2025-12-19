@@ -1,27 +1,18 @@
 <h1 class="pdfviewer__title">Invoices</h1>
 <div class="pdfviewer">
-  <div class="pdfviewer__invoice">
-    <mat-list role="list" class="pdfviewer__invoice-info">
-      <mat-list-item role="listitem">name: {{(openedInvoice$ | async)?.name}}</mat-list-item>
-      <mat-list-item role="listitem">date: {{(openedInvoice$ | async)?.date}}</mat-list-item>
-      <mat-list-item role="listitem">amount: {{(openedInvoice$ | async)?.amount}}</mat-list-item>
-      <mat-list-item role="listitem">address: {{(openedInvoice$ | async)?.address}}</mat-list-item>
-    </mat-list>
-    <ngx-extended-pdf-viewer [src]="'assets/pdfs/' + (openedInvoice$ | async)?.pdf">
-    </ngx-extended-pdf-viewer>
-  </div>
-
-  <mat-card appearance="outlined" class="pdfviewer__list">
-    <mat-card-header>
-      <mat-card-title>Invoices</mat-card-title>
-    </mat-card-header>
+  <mat-card appearance="outlined" class="pdfviewer__invoice-container">
     <mat-card-actions>
-      <mat-list role="list" class="pdfviewer__info">
-        <mat-list-item role="listitem" *ngFor="let invoice of (invoices$ | async); let i= index" (click)="changePDF(i)">
-          {{invoice.name}}
-        </mat-list-item>
-      </mat-list>
+      <div class="pdfviewer__invoice">
+        <mat-list role="list" class="pdfviewer__invoice-info">
+          <mat-list-item role="listitem"><strong>Name</strong>: {{(openedInvoice$ | async)?.name}}</mat-list-item>
+          <mat-list-item role="listitem"><strong>Date</strong>: {{(openedInvoice$ | async)?.date}}</mat-list-item>
+          <mat-list-item role="listitem"><strong>Amount</strong>: {{(openedInvoice$ | async)?.amount}}</mat-list-item>
+          <mat-list-item role="listitem"><strong>Address</strong>: {{(openedInvoice$ | async)?.address}}</mat-list-item>
+        </mat-list>
+        <ngx-extended-pdf-viewer [src]="'assets/pdfs/' + (openedInvoice$ | async)?.pdf">
+        </ngx-extended-pdf-viewer>
+      </div>
     </mat-card-actions>
   </mat-card>
-
+  <app-invoices-list (changePDFEvent)="changePDF($event)"></app-invoices-list>
 </div>

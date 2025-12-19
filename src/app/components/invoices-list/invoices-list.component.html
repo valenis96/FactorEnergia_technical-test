@@ -1,0 +1,12 @@
+<mat-card appearance="outlined" class="invoices-list">
+  <mat-card-header>
+    <mat-card-title>Invoices List</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let invoice of (invoices$ | async); let i= index" (click)="changePDF(i)">
+        {{invoice.name}}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-actions>
+</mat-card>

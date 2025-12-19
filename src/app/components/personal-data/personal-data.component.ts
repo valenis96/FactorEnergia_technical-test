@@ -25,10 +25,12 @@ export class PersonalDataComponent {
   constructor(private readonly dialog: MatDialog, private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    // get user that is stored from the login
     this.user$ = this.store.select('user')
   }
 
   openDialog(): void {
+    // open the dialog to edit the persona data
     this.dialog.open(EditDialogComponent);
   }
 }
