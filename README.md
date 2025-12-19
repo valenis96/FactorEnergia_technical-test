@@ -1,4 +1,4 @@
-# Technical test
+# Technical Test
 
 This project is a tecnical test for FactorEnergia.
 Inside you can find:
@@ -8,11 +8,23 @@ Inside you can find:
   email: val.maronese@gmail.com
   password: 123
   ```
+  
+  <img width="250" alt="image" src="https://github.com/user-attachments/assets/4db210c7-6721-43b7-bee6-8c72ab508ed9" />
+
 - A private page with two buttons:
-    - one to view your personal data
-    - one to view your personal data
+  
+  <img width="400" alt="image" src="https://github.com/user-attachments/assets/5aa56030-9418-4ac6-b7a6-010905aa30b2" />
+
 - A page where it is possible to view your personal data and edit it through the “Edit personal data” button, which opens a dialog with a form containing the data you can modify.
+  
+  <img width="300" alt="image" src="https://github.com/user-attachments/assets/9a6929f9-ab1b-4a00-8401-3569462eed3a" />
+
+  <img width="300" alt="image" src="https://github.com/user-attachments/assets/b55b757e-fc61-4c22-a243-c474031dc519" />
+
 - A page where all the invoices are listed. The first invoice is opened by default, with its details shown on the left and the PDF displayed on the right. I used the pdfviewer.net library, which provides several features, including the ability to download the PDF.
+  
+  <img width="600"  alt="image" src="https://github.com/user-attachments/assets/e0c5c670-d08f-43bb-b82b-210036917d0b" />
+
 
 ## Technologies Used
 
