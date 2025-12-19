@@ -31,6 +31,7 @@ export class EditDialogComponent {
   constructor(private readonly dialog: MatDialogRef<EditDialogComponent>, private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    // get the user data and put it in the form
     this.subs.add(this.store.select('user')
       .pipe(take(1))
       .subscribe((u: User) => {
@@ -46,6 +47,7 @@ export class EditDialogComponent {
   }
 
   changeData(): void {
+    // get the new form value and put it in the store to edit the personal data
     const editedUser: User = {
       ...this.user,
       ...this.editForm.value,
@@ -55,7 +57,7 @@ export class EditDialogComponent {
     this.dialog.close();
   }
 
-  onNoClick(): void {
+  cancel(): void {
     this.dialog.close();
   }
 

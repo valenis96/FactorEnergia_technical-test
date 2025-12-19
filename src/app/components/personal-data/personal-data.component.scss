@@ -1,7 +1,25 @@
 mat-card {
   width: fit-content;
+  padding: 1rem;
 
-  mat-list {
-    text-align: start;
+  mat-card-title{
+    color: var(--primary);
+  }
+
+  mat-card-content{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+
+    img {
+      width: 15rem;
+      height: 15rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    mat-list {
+      text-align: start;
+    }
   }
 }

@@ -3,14 +3,15 @@
     <mat-card-title>Account data</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <img src="../../../assets/public/DSC01444.jpg" alt="Profile Photo">
     <mat-list role="list">
-      <mat-list-item role="listitem">name: {{(user$ | async)?.name}}</mat-list-item>
-      <mat-list-item role="listitem">email: {{(user$ | async)?.email}}</mat-list-item>
-      <mat-list-item role="listitem">date: {{(user$ | async)?.date}}</mat-list-item>
-      <mat-list-item role="listitem">address: {{(user$ | async)?.address}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Name</strong>: {{(user$ | async)?.name}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Email</strong>: {{(user$ | async)?.email}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Date</strong>: {{(user$ | async)?.date}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Address</strong>: {{(user$ | async)?.address}}</mat-list-item>
     </mat-list>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="openDialog()">Edit</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Edit personal data</button>
   </mat-card-actions>
 </mat-card>
